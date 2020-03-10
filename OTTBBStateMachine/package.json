@@ -1,0 +1,15 @@
+{
+  "name": "ottbbstatemachine",
+  "version": "1.0.0",
+  "description": "an exersice to model twc's OTTBB Video player as a state machine",
+  "main": "index.js",
+  "dependencies": {
+    "xstate": "^4.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
