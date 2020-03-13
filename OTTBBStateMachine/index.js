@@ -63,17 +63,6 @@ const OTTBBVideoPlayer = Machine({
                 }
             }
         },
-        readyToPlay: {
-            on: {
-                play: [
-                    { target: 'buffering', cond: 'isBufferEmpty', actions: ['setShouldPlayWhenReady'] },
-                    { target: 'playing', cond: 'isBufferFull'}
-                ],
-                '': [
-                    { target: 'buffering', cond: 'shouldPlayWhenReady' }
-                ]
-            }
-        },
         buffering: {
             entry: ['emitBufferingStart', 'setBufferIsNotFull'],
             exit: ['emitBufferingEnd', 'setBufferIsFull'],
@@ -81,7 +70,7 @@ const OTTBBVideoPlayer = Machine({
                 bufferingEnd: [
                     { target: 'paused', cond: 'shouldPauseWhenReady' },
                     { target: 'playing', cond: 'shouldPlayWhenReady' },
-                    { target: 'readyToPlay', cond: 'shouldNotPlayWhenReady' }
+                    { target: 'paused', cond: 'shouldNotPlayWhenReady' }
                 ],
                 error: {
                     target: 'errored'
